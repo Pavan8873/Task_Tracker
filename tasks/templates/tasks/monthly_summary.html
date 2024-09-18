@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Summary</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Monthly Summary</h1>
+
+        <!-- Completed Tasks Section -->
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+                <h2>Completed Tasks</h2>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for task in completed_tasks %}
+                        <li class="list-group-item">
+                            {{ task.title }} - Due: {{ task.due_date }}
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">No completed tasks for this month.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Carried Forward Tasks Section -->
+        <div class="card mb-4">
+            <div class="card-header bg-danger text-white">
+                <h2>Carried Forward Tasks</h2>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for task in carried_forward_tasks %}
+                        <li class="list-group-item">
+                            {{ task.title }} - Due: {{ task.due_date }}
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">No carried forward tasks for this month.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
